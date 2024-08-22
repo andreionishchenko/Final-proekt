@@ -1,5 +1,6 @@
 import mysql.connector
-from scratch import get_connect_write, save_query_to_db
+
+from scratch import save_query_to_db
 
 
 def get_connect():  # создание функции для чтения  из  базы данных
@@ -35,7 +36,7 @@ def get_search_by_keyword(cursor, keyword):
         or release_year LIKE %s                 # По ключевому слову находится 10 фильмов из таблици 'film'
         LIMIT 10;
         """
-    cursor.execute(sql, ('%' + keyword + '%','%' + keyword + '%','%' + keyword + '%',))
+    cursor.execute(sql, ('%' + keyword + '%', '%' + keyword + '%', '%' + keyword + '%',))
 
     data = cursor.fetchall()  # cursor.fetchall  означает поиск всех записей
     for record in data:  # for record означает перебор всех данных в списке data
